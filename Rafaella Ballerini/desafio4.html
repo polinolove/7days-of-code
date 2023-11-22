@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const numeroAdivinhacao = 7;
+        let chute = "";
+        let acertou = false;
+
+        for (let contador = 0; contador < 3; contador++) {
+            chute = prompt("Adivinhe um número de 0 a 10:");
+            if (chute == numeroAdivinhacao) {
+                alert(`Parabéns você acertou, O número era ${numeroAdivinhacao}.`);
+                acertou = true;
+                break;
+            }
+            alert("Errado!");
+        }
+        if (acertou) {
+            alert(`Você não acertou,O número era ${numeroAdivinhacao}!`);
+        }
+    </script>
+</body>
+
+</html>

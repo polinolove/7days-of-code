@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var frutas = [];
+        var laticinios = [];
+        var doces = [];
+        var congelados = [];
+        var comida = "";
+        var categoria = "";
+        var remover = "";
+
+        var adicionar = 'sim';
+        while (adicionar !== 'não') {
+            adicionar = prompt("Você deseja adicionar uma comida na lista de compras? Responda 'sim' ou 'não'.");
+            while (adicionar !== 'sim' && adicionar !== 'não') {
+                alert('Operação não reconhecida!');
+            }
+            if (adicionar === 'não') {
+                break;
+            }
+
+            comida = prompt('Qual comida você deseja inserir?');
+            categoria = prompt("Em qual categoria essa comida se encaixa: 'frutas', 'laticínios', 'doces' ou 'congelados'?");
+            if (categoria === 'frutas') {
+                frutas.push(comida);
+            } else if (categoria === 'laticínios') {
+                laticinios.push(comida);
+            } else if (categoria === 'doces') {
+                doces.push(comida);
+            } else if (categoria === 'congelados') {
+                congelados.push(comida);
+            } else {
+                alert('Essa categoria não foi pré-definida.');
+            }
+        }
+
+        // Verifica se há itens em pelo menos uma das listas
+        if (frutas.length === 0 && laticinios.length === 0 && doces.length === 0 && congelados.length === 0) {
+            alert("A lista de compras está vazia. Nenhum item para remover.");
+        } else {
+            // Mostra a lista completa
+            alert(`Lista de compras:\n  Frutas: ${frutas}\n  Laticínios: ${laticinios}\n  Doces: ${doces}\n  Congelados: ${congelados}`);
+
+            // Pergunta se deseja remover algum item
+            var desejaRemover = prompt("Deseja remover algum item da lista? Responda 'sim' ou 'não'.");
+            while (desejaRemover !== 'sim' && desejaRemover !== 'não') {
+                alert('Operação não reconhecida!');
+                desejaRemover = prompt("Deseja remover algum item da lista? Responda 'sim' ou 'não'.");
+            }
+
+            if (desejaRemover === 'sim') {
+                // Pergunta a categoria
+                var categoriaRemover = prompt("De qual categoria você deseja remover um item: 'frutas', 'laticínios', 'doces' ou 'congelados'?");
+
+                // Verifica se a categoria é válida
+                if (['frutas', 'laticínios', 'doces', 'congelados'].includes(categoriaRemover)) {
+                    var listaCategoria = eval(categoriaRemover); // Obtém a lista correspondente
+
+                    // Verifica se a lista da categoria escolhida está vazia
+                    if (listaCategoria.length === 0) {
+                        alert(`A lista de ${categoriaRemover} está vazia. Nenhum item para remover.`);
+                    } else {
+                        // Pergunta qual item remover
+                        var itemRemover = prompt(`Digite o nome do item que deseja remover da lista de ${categoriaRemover}:\n${listaCategoria.join('\n')}`);
+
+                        // Verifica se o item está presente na lista
+                        var indexItem = listaCategoria.indexOf(itemRemover);
+                        if (indexItem !== -1) {
+                            listaCategoria.splice(indexItem, 1);
+                            alert(`"${itemRemover}" removido da lista de ${categoriaRemover}.`);
+                        } else {
+                            alert(`"${itemRemover}" não encontrado na lista de ${categoriaRemover}. Nenhum item removido.`);
+                        }
+                    }
+                } else {
+                    alert('Categoria inválida.');
+                }
+            }
+        }
+
+        alert(`Lista de compras final:\n  Frutas: ${frutas}\n  Laticínios: ${laticinios}\n  Doces: ${doces}\n  Congelados: ${congelados}`);
+
+
+
+
+    </script>
+
+</html>
